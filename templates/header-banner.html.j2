@@ -1,0 +1,27 @@
+<header class="header-banner">
+	<div class="header-container">
+		<span class="material-icons md-48">dashboard</span>
+		<h1 class="header">Spotify Graphs Dashboard</h1>
+	</div>
+
+	<form method="POST" class="csv-form" enctype="multipart/form-data">
+		<div class="file-upload">
+			<label for="spotify-csv" class="label">Upload New CSV</label>
+			<input
+				type="file"
+				class="file-input"
+				accept=".csv"
+				id="spotify-csv"
+				name="spotify-csv"
+			>
+		</div>
+		<button type="submit" class="submit-btn">SUBMIT</button>
+
+		{% if get_flashed_messages() %}
+			{% set category, message = get_flashed_messages(with_categories=true)[0] %}
+			<div class="flash-msg {{ category }}">
+				<p>{{ message }}</p>
+			</div>
+		{% endif %}
+	</form>
+</header>

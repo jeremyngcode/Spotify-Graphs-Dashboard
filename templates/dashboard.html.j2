@@ -1,0 +1,81 @@
+{% extends "layout.html.j2" %}
+{% import "macros.html.j2" as m %}
+
+{% block menu1 %}
+	<a class="link" href="{{ url_for('default_dashboard', dashboard_id=1) }}">
+		<span class="material-icons">show_chart</span>Daily Streams / Listeners
+	</a>
+	<a class="link" href="{{ url_for('default_dashboard', dashboard_id=2) }}">
+		<span class="material-icons">bar_chart</span>Monthly Streams
+	</a>
+	<a class="link" href="{{ url_for('default_dashboard', dashboard_id=3) }}">
+		<span class="material-icons">show_chart</span>Daily Average Streams per Listener
+	</a>
+{% endblock %}
+
+{% block datepicker_form_input %}
+	{% if dashboard_id in (1, 3) %}
+		{{ m.date_input('Starting Date:', minmax_datemonth[0], minmax_datemonth[1], 'starting-date') }}
+		{{ m.date_input('Ending Date:', minmax_datemonth[0], minmax_datemonth[1], 'ending-date') }}
+		<p class="or">--- OR ---</p>
+		{{ m.integer_input('Last X Days:', minmax_datemonth[2], '365', 'last-xdays') }}
+
+	{% elif dashboard_id == 2 %}
+		{{ m.month_input('Starting Month:', minmax_datemonth[0], minmax_datemonth[1], 'starting-month') }}
+		{{ m.month_input('Ending Month:', minmax_datemonth[0], minmax_datemonth[1], 'ending-month') }}
+		<p class="or">--- OR ---</p>
+		{{ m.integer_input('Last X Months:', minmax_datemonth[2], '12', 'last-xmonths') }}
+	{% endif %}
+{% endblock %}
+
+{% block datepicker_form_toggle %}
+	{% if dashboard_id == 1 %}
+		<div class="toggle-set">
+			{{ m.toggle('Show Streams:', 'show-streams-toggle', 'show-streams', 'checked') }}
+			{{ m.toggle('Show Listeners:', 'show-listeners-toggle', 'show-listeners', 'checked') }}
+		</div>
+
+	{% elif dashboard_id == 2 %}
+		<div class="toggle-set">
+			{{ m.toggle('Show 1st 28 Days:', 'first-28days-toggle', 'first-28days') }}
+		</div>
+	{% endif %}
+{% endblock %}
+
+{% block datepicker_form_submit_btn %}
+	<button type="submit" class="submit-btn">PLOT!</button>
+{% endblock %}
+
+{% block databar %}
+	{% if user_input %}
+		{% if dashboard_id in (1, 2) %}
+			{{ m.data_box(range_label_totalaverage[0], range_value_totalaverage[0], div_class='data-box input') }}
+			{{ m.data_box(range_label_totalaverage[1], range_value_totalaverage[1], div_class='data-box input') }}
+
+		{% elif dashboard_id == 3 %}
+			{{ m.data_box(range_label_average, range_value_average, div_class='data-box input', extra_text='Average per Listener') }}
+			{{ m.data_box('Last 365 Days | Total', total_streams['last_365'], div_class='data-box fixed') }}
+		{% endif %}
+
+	{% else %}
+		{{ m.data_box('Lifetime | Total', total_streams['lifetime'], div_class='data-box lifetime') }}
+		{{ m.data_box('Last 365 Days | Total', total_streams['last_365'], div_class='data-box fixed') }}
+	{% endif %}
+
+	{{ m.data_box('Last 28 Days | Total', total_streams['last_28'], div_class='data-box fixed') }}
+	{{ m.data_box('Last 7 Days | Total', total_streams['last_7'], div_class='data-box fixed') }}
+	{{ m.data_box('Last Day | Total', total_streams['last_1'], div_class='data-box fixed') }}
+{% endblock %}
+
+{% block titlebar_right %}
+	<div class="datemonth-range">
+		<p class="label">Range:</p>
+		<p class="range">{{ titlebar_rangelabel }}</p>
+	</div>
+{% endblock %}
+
+{% block content_container %}
+	<div class="graph-container">
+		<img src="{{ url_for('get_graph') }}" class="graph">
+	</div>
+{% endblock %}

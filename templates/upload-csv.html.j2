@@ -1,0 +1,70 @@
+{% extends "layout.html.j2" %}
+{% import "macros.html.j2" as m %}
+
+{% block css %}
+	{{ super() }}
+	<link rel="stylesheet" href="{{ url_for('static', filename='csv-form-container.css') }}">
+{% endblock %}
+
+{% block pfp_img %}
+	<img src="{{ url_for('static', filename='default-pfp.jpg') }}" class="pfp">
+{% endblock %}
+
+{% block menu1 %}
+	<p class="link disabled">
+		<span class="material-icons">show_chart</span>Daily Streams / Listeners
+	</p>
+	<p class="link disabled">
+		<span class="material-icons">bar_chart</span>Monthly Streams
+	</p>
+	<p class="link disabled">
+		<span class="material-icons">show_chart</span>Daily Average Streams per Listener
+	</p>
+{% endblock %}
+
+{% block datepicker_form_input %}
+	<div class="date-input">
+		<label class="label" for="starting-date">Starting Date:</label>
+		<input type="date" class="input" id="starting-date" disabled>
+	</div>
+	<div class="date-input">
+		<label class="label" for="ending-date">Ending Date:</label>
+		<input type="date" class="input" id="ending-date" disabled>
+	</div>
+	<p class="or">--- OR ---</p>
+	<div class="integer-input">
+		<label class="label" for="last-xdays">Last X Days:</label>
+		<input type="number" class="input" id="last-xdays" disabled>
+	</div>
+{% endblock %}
+
+{% block datepicker_form_toggle %}
+	<div class="toggle-set">
+		{{ m.toggle('Show Streams:', 'show-streams-toggle', 'show-streams') }}
+		{{ m.toggle('Show Listeners:', 'show-listeners-toggle', 'show-listeners') }}
+	</div>
+{% endblock %}
+
+{% block datepicker_form_submit_btn %}
+	<button type="submit" class="submit-btn" disabled>PLOT!</button>
+{% endblock %}
+
+{% block databar %}
+	{{ m.data_box('Lifetime | Total', '???', div_class='data-box lifetime') }}
+	{{ m.data_box('Last 365 Days | Total', '???', div_class='data-box fixed') }}
+	{{ m.data_box('Last 28 Days | Total', '???', div_class='data-box fixed') }}
+	{{ m.data_box('Last 7 Days | Total', '???', div_class='data-box fixed') }}
+	{{ m.data_box('Last Day | Total', '???', div_class='data-box fixed') }}
+{% endblock %}
+
+{% block content_container %}
+	<div class="csv-form-container">
+		<form method="POST" class="csv-form" enctype="multipart/form-data">
+			<label class="file-upload-container">
+				<span class="label">Upload Your Spotify CSV File</span>
+				<input type="file" class="file-input" accept=".csv" name="spotify-csv">
+			</label>
+			<button type="submit" class="submit-btn">SUBMIT</button>
+		</form>
+	</div>
+{% endblock %}

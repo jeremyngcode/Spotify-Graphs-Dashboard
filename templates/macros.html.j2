@@ -1,0 +1,81 @@
+{% macro data_box(range_label, number, div_class='', extra_text='') %}
+	<div class="{{ div_class }}">
+		<p class="range-label">{{ range_label }}</p>
+		<p class="number">{{ number }}</p>
+		<p class="streams">Streams</p>
+		{% if extra_text %}<p class="extra-text">{{ extra_text }}</p>{% endif %}
+	</div>
+{% endmacro %}
+
+{% macro date_input(label, min, max, name) %}
+	<div class="date-input">
+		<label class="label" for="{{ name }}">{{ label }}</label>
+		<input
+			type="date"
+			class="input"
+			min="{{ min }}"
+			max="{{ max }}"
+			id="{{ name }}"
+			name="{{ name }}"
+		>
+	</div>
+{% endmacro %}
+
+{% macro month_input(label, min, max, name) %}
+	<div class="month-input">
+		<label class="label" for="{{ name }}">{{ label }}</label>
+		<input
+			type="month"
+			class="input"
+			min="{{ min }}"
+			max="{{ max }}"
+			placeholder="YYYY-MM"
+			pattern="[0-9]{4}-[0-9]{2}"
+			id="{{ name }}"
+			name="{{ name }}"
+		>
+	</div>
+{% endmacro %}
+
+{% macro integer_input(label, max, placeholder, name) %}
+	<div class="integer-input">
+		<label class="label" for="{{ name }}">{{ label }}</label>
+		<input
+			type="number"
+			class="input"
+			min="1"
+			max="{{ max }}"
+			placeholder="{{ placeholder }}"
+			list="{{ name ~ '-list' }}"
+			id="{{ name }}"
+			name="{{ name }}"
+		>
+		<datalist id="{{ name ~ '-list' }}">
+			{% if name == 'last-xdays' %}
+				{% for n in (28, 90, 180, 365, 730) %}
+					<option value="{{ n }}"></option>
+				{% endfor %}
+			{% elif name == 'last-xmonths' %}
+				{% for n in (12, 24, 36, 48, 60) %}
+					<option value="{{ n }}"></option>
+				{% endfor %}
+			{% endif %}
+		</datalist>
+	</div>
+{% endmacro %}
+
+{% macro toggle(label, id, name) %}
+	<div class="toggle">
+		<label class="toggle-label" for="{{ id }}">{{ label }}</label>
+		<label class="toggle-switch">
+			<input
+				type="checkbox"
+				class="checkbox"
+				id="{{ id }}"
+				name="{{ name }}"
+				{% if 'checked' in varargs %}checked{% endif %}
+			>
+			<span class="toggle-slider"></span>
+		</label>
+	</div>
+{% endmacro %}

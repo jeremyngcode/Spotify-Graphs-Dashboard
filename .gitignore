@@ -1,0 +1,7 @@
+__pycache__
+.env
+graph_plot/spotify-graph.png
+user_uploads/spotify_master.csv
+user_uploads/spotify_latest.csv
+sample-csv-data/sample-dataset-master.csv
+sample-csv-data/sample-dataset-latest.csv

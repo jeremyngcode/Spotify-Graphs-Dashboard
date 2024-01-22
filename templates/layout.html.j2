@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Spotify Graphs Dashboard | {{ graph_title }}</title>
+	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+
+	{% block css %}
+	<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+	{% endblock %}
+</head>
+
+<body>
+	{% include "header-banner.html.j2" %}
+
+	<div class="dashboard-container">
+		<aside class="sidebar">
+			<div class="pfp-container">
+				{% block pfp_img %}
+					<img src="{{ url_for('static', filename='default-pfp.jpg') }}" class="pfp alive">
+				{% endblock %}
+			</div>
+
+			<nav class="menu-1">
+				{% block menu1 %}
+				{% endblock %}
+			</nav>
+
+			<div class="separator"></div>
+
+			<form method="GET" class="datepicker-form" action="{{ url_for('input_dashboard', dashboard_id=dashboard_id) }}">
+				{% block datepicker_form_input %}
+				{% endblock %}
+
+				{% block datepicker_form_toggle %}
+				{% endblock %}
+
+				{% block datepicker_form_submit_btn %}
+				{% endblock %}
+			</form>
+		</aside>
+
+		<main class="main">
+			<div class="data-bar">
+				{% block databar %}
+				{% endblock %}
+			</div>
+
+			<div class="content-area">
+				<div class="title-bar">
+					<h2 class="header">{{ graph_title }}</h2>
+
+					{% block titlebar_right %}
+						<div></div>
+					{% endblock %}
+				</div>
+
+				{% block content_container %}
+				{% endblock %}
+			</div>
+		</main>
+	</div>
+</body>
+
+</html>
