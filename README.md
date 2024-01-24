@@ -1,5 +1,6 @@
 Spotify Graphs Dashboard
 ========================
+A simple and fast dashboard app for visualizing streams/listeners data from a Spotify artist's CSV file.
 
 Intro / The Problem
 -------------------
@@ -13,7 +14,7 @@ Then along the way, I decided I might as well add in some extra utility, a signi
 
 The following is a quick 40-second showcase of the dashboard UI:
 
-![insert video here]
+https://github.com/jeremyngcode/Spotify-Graphs-Dashboard/assets/156220343/86bfb581-5195-4e1d-ad0d-36188ad001ab
 
 Using The Dashboard
 -------------------
@@ -24,15 +25,14 @@ Using The Dashboard
 ### Uploading CSV
 The first time dashboard_app.py is run, you will be prompted to upload your Spotify CSV file which will be saved as "spotify_master.csv" in the filesystem. This master CSV file is retrieved in subseuqent runs of the dashboard app and is where all graph plots retrieve data from. 
 
-If there is a new CSV upload, all missing date entries are appended to it and it becomes the new master CSV file.
+If there is a new CSV upload, all missing date entries are appended to it and it becomes the new master CSV file.  
+(see [Dev Notes](#dev-notes) for more info)
 
 Example:  
 Master CSV date range: 2016-01-01 - 2024-01-20  
 New CSV date range: 2022-01-01 - 2024-01-23 (past 2 years plus year-to-date)
 
 2016-01-01 - 2021-12-31 data from master CSV is appended to the new CSV and saved as the new master CSV.
-
-(see Dev Notes for more info)
 
 ### Plotting Graphs
 There are 3 main graph plots:
