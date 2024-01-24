@@ -72,3 +72,7 @@ This is one of my most significant and satisfying projects so far. After learnin
 - [matplotlib](https://pypi.org/project/matplotlib/)
 - [pandas](https://pypi.org/project/pandas/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
+
+---
+
+![sample-dashboard](https://github.com/jeremyngcode/Spotify-Graphs-Dashboard/assets/156220343/6e4f51dd-7650-4679-a535-d907f55d105a)
