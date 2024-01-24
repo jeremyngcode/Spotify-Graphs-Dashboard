@@ -57,7 +57,7 @@ At the default plot pages, the 5 data boxes above the graph will always display 
 If the datepicker form was used to plot, the pale orange boxes will display data derived from your selected date range instead, while the other boxes remain the same.
 
 ### Sample Data Generator
-For anyone who isn't a Spotify artist, I've included sample_data_generator.py if you want to play around with the dashboard. Running this script will output the files "sample-dataset-master.csv" and "sample-dataset-latest.csv" in the same directory. The former is meant to be uploaded when you run the dashboard app for the first time, and the latter is meant to be your 'new' CSV file from Spotify.
+For anyone who isn't a Spotify artist, I've included [sample_data_generator.py](sample-csv-data/sample_data_generator.py) if you want to play around with the dashboard. Running this script will output the files "sample-dataset-master.csv" and "sample-dataset-latest.csv" in the same directory. The former is meant to be uploaded when you run the dashboard app for the first time, and the latter is meant to be your 'new' CSV file from Spotify.
 
 Dev Notes
 ---------
