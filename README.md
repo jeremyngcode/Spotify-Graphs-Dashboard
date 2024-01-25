@@ -69,6 +69,7 @@ This is one of my most significant and satisfying projects so far. After learnin
 
 #### Notable libraries used / learned for this project:
 - [Flask](https://pypi.org/project/Flask/)
+- [Jinja](https://pypi.org/project/Jinja2/)
 - [matplotlib](https://pypi.org/project/matplotlib/)
 - [pandas](https://pypi.org/project/pandas/)
 - [python-dotenv](https://pypi.org/project/python-dotenv/)
