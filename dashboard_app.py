@@ -54,7 +54,10 @@ def default_dashboard(dashboard_id):
 				break
 		else:
 			last_xdays = len(df)
+
 		titlebar_rangelabel = f'Last {last_xdays} Days'
+		if last_xdays == 1:
+			titlebar_rangelabel = titlebar_rangelabel[:-1]
 
 		if dashboard_id == 1:
 			plot_graph_1(df, last_xdays=last_xdays,
@@ -76,7 +79,10 @@ def default_dashboard(dashboard_id):
 				break
 		else:
 			last_xmonths = len(df_monthly) - 1
+
 		titlebar_rangelabel = f'Last {last_xmonths} Months'
+		if last_xmonths == 1:
+			titlebar_rangelabel = titlebar_rangelabel[:-1]
 
 		plot_graph_2(df, df_monthly, last_xmonths=last_xmonths,
 			save_path=SPOTIFY_GRAPH_IMG
@@ -136,10 +142,9 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label_totalaverage = (
-				f'Last {last_xdays} Days | Total',
-				f'Last {last_xdays} Days | Daily Average'
-			)
+			range_label = f'Last {last_xdays} Days'
+			if last_xdays == 1:
+				range_label = range_label[:-1]
 
 		else:
 			selected_date_range = validate_date_input(df,
@@ -157,12 +162,15 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label_totalaverage = (
-				f'Range: {len(filtered_df)} Days | Total',
-				f'Range: {len(filtered_df)} Days | Daily Average'
-			)
+			range_label = f'Range: {len(filtered_df)} Days'
+			if len(filtered_df) == 1:
+				range_label = range_label[:-1]
 
 		range_value_totalaverage = get_range_totalaverage(filtered_df)
+		range_label_totalaverage = (
+			f'{range_label} | Total',
+			f'{range_label} | Daily Average'
+		)
 
 		starting_date = filtered_df['date'].iloc[0]
 		ending_date = filtered_df['date'].iloc[-1]
@@ -170,8 +178,8 @@ def input_dashboard(dashboard_id):
 
 		return render_template("dashboard.html.j2",
 			**data,
-			range_label_totalaverage=range_label_totalaverage,
 			range_value_totalaverage=range_value_totalaverage,
+			range_label_totalaverage=range_label_totalaverage,
 			titlebar_rangelabel=titlebar_rangelabel
 		)
 
@@ -199,10 +207,10 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label_totalaverage = (
-				f'Last {last_xmonths} Months | Total',
-				f'Last {last_xmonths} Months | Monthly Average'
-			)
+			range_label = f'Last {last_xmonths} Months'
+			if last_xmonths == 1:
+				range_label = range_label[:-1]
+
 			range_value_totalaverage = get_range_totalaverage(filtered_df[:-1])
 
 			ending_month = filtered_df['date'].iloc[-2]
@@ -223,13 +231,18 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label_totalaverage = (
-				f'Range: {len(filtered_df)} Months | Total',
-				f'Range: {len(filtered_df)} Months | Monthly Average'
-			)
+			range_label = f'Range: {len(filtered_df)} Months'
+			if len(filtered_df) == 1:
+				range_label = range_label[:-1]
+
 			range_value_totalaverage = get_range_totalaverage(filtered_df)
 
 			ending_month = filtered_df['date'].iloc[-1]
+
+		range_label_totalaverage = (
+			f'{range_label} | Total',
+			f'{range_label} | Monthly Average'
+		)
 
 		starting_month = filtered_df['date'].iloc[0]
 		titlebar_rangelabel = (
@@ -238,8 +251,8 @@ def input_dashboard(dashboard_id):
 
 		return render_template("dashboard.html.j2",
 			**data,
-			range_label_totalaverage=range_label_totalaverage,
 			range_value_totalaverage=range_value_totalaverage,
+			range_label_totalaverage=range_label_totalaverage,
 			titlebar_rangelabel=titlebar_rangelabel
 		)
 
@@ -257,7 +270,9 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label_average = f'Last {last_xdays} Days | Daily Average'
+			range_label = f'Last {last_xdays} Days'
+			if last_xdays == 1:
+				range_label = range_label[:-1]
 
 		else:
 			selected_date_range = validate_date_input(df,
@@ -274,11 +289,14 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label_average = f'Range: {len(filtered_df)} Days | Daily Average'
+			range_label = f'Range: {len(filtered_df)} Days'
+			if len(filtered_df) == 1:
+				range_label = range_label[:-1]
 
 		range_value_average = round(
 			sum(daily_streams_per_listener) / len(daily_streams_per_listener), 3
 		)
+		range_label_average = f'{range_label} | Daily Average'
 
 		starting_date = filtered_df['date'].iloc[0]
 		ending_date = filtered_df['date'].iloc[-1]
@@ -286,8 +304,8 @@ def input_dashboard(dashboard_id):
 
 		return render_template("dashboard.html.j2",
 			**data,
-			range_label_average=range_label_average,
 			range_value_average=range_value_average,
+			range_label_average=range_label_average,
 			titlebar_rangelabel=titlebar_rangelabel
 		)
 
