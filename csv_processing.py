@@ -45,28 +45,35 @@ def validate_csv(csv_file):
 		return error_msg
 
 	for (i, row) in enumerate(csv1[1:], 1):
+		csv_error = f'CSV Error (row {i}):'
+
 		if len(row) != 4:
-			error_msg = f'CSV Error (row {i}): Unexpected row length.'
+			error_msg = f'{csv_error} Unexpected row length.'
 			print(error_msg)
 			return error_msg
 
 		if len(row[0]) != 10:
-			error_msg = f'CSV Error (row {i}): Unexpected length for date value.'
+			error_msg = f'{csv_error} Unexpected length for date value.'
 			print(error_msg)
 			return error_msg
 
 		try:
 			datetime.strptime(row[0], '%Y-%m-%d')
 		except Exception as e:
-			error_msg = f'CSV Error (row {i}): {e}'
+			error_msg = f'{csv_error} {e}'
 			print(error_msg)
 			return error_msg
 
 		for j in (1, 2, 3):
 			try:
-				int(row[j])
-			except Exception as e:
-				error_msg = f'CSV Error (row {i}): {e}'
+				n = int(row[j])
+			except ValueError:
+				error_msg = f'{csv_error} "{row[j]}" is not a valid integer.'
+				print(error_msg)
+				return error_msg
+
+			if n < 0:
+				error_msg = f'{csv_error} Negative values are not valid.'
 				print(error_msg)
 				return error_msg
 
