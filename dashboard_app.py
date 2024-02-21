@@ -351,14 +351,13 @@ def upload_new_csv(dashboard_id):
 		SPOTIFY_MASTER_CSV, SPOTIFY_LATEST_CSV, TEMP_CSV
 	)
 
-	if csv_processed not in (1, 2):
-		error_msg = csv_processed
-		abort(400, description=error_msg)
-
 	if csv_processed == 1:
 		flash('New CSV successfully merged. &#9989;', 'success')
-	else:
+	elif csv_processed == 2:
 		flash('Empty field submitted. &#10060;', 'error')
+	else:
+		error_msg = csv_processed
+		abort(400, description=error_msg)
 
 	return redirect(url_for('default_dashboard', dashboard_id=dashboard_id))
 
