@@ -59,6 +59,8 @@ def plot_graph_1(df, show_streams=True, show_listeners=True,
 		print('Saving graph..')
 		fig.savefig(save_path)
 
+	plt.close()
+
 	print('-' * 100)
 	return df2
 
@@ -167,6 +169,8 @@ def plot_graph_2(df, df_monthly, first_28days=False,
 		print('Saving graph..')
 		fig.savefig(save_path)
 
+	plt.close()
+
 	print('-' * 100)
 	return df2
 
@@ -223,6 +227,8 @@ def plot_graph_3(df,
 	if save_path:
 		print('Saving graph..')
 		fig.savefig(save_path)
+
+	plt.close()
 
 	print('-' * 100)
 	return (df2, daily_streams_per_listener)
