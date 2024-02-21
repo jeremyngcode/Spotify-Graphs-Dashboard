@@ -28,10 +28,10 @@ The first time dashboard_app.py is run, you will be prompted to upload your Spot
 If there is a new CSV upload, all missing date entries are appended to it and it becomes the new master CSV file.
 
 - **Example:** <br>
-  Master CSV date range: 2016-01-01 - 2024-01-20 <br>
-  New CSV date range: 2022-01-01 - 2024-01-23 (past 2 years plus year-to-date)
+	Master CSV date range: 2016-01-01 - 2024-01-20 <br>
+	New CSV date range: 2022-01-01 - 2024-01-23 (past 2 years plus year-to-date)
 
-  2016-01-01 - 2021-12-31 data from master CSV is appended to the new CSV and saved as the new master CSV.
+	2016-01-01 - 2021-12-31 data from master CSV is appended to the new CSV and saved as the new master CSV.
 
 ### Plotting Graphs
 There are 3 main graph plots:
