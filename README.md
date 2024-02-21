@@ -43,7 +43,9 @@ There are 3 main graph plots:
 
 - When plotting using the datepicker form, the 'Last X Days/Months' input is prioritized over a date range input. If this field is empty, then the empty starting and/or ending date field is assumed to be the earliest and latest date in the master CSV respectively.
 
-- When using the 'Last X Months' input field for monthly streams, the current month (assumed to be the month of the latest date entry in the master CSV) is always excluded from data calculations, but it will still be plotted. That means that if the current month is 2024 Jan and you input 12, the 12 months total and monthly average streams displayed will be based on 2023 Jan to 2023 Dec, but 2024 Jan will stil be included in the plot (13 bars in total). I figured this probably makes better sense for practicality reasons, since an uncompleted month would skew averages. You can still use the month range inputs if and when this isn't the desired behaviour.
+- When using the 'Last X Months' input field for monthly streams, the current month (assumed to be the month of the latest date entry in the master CSV) is always excluded from data calculations, but it will still be plotted. That means that if the current month is 2024 Jan and you input 12, the 12 months total and monthly average streams displayed will be based on 2023 Jan to 2023 Dec, but 2024 Jan will stil be included in the plot (13 bars in total).
+
+  I figured this probably makes better sense for practicality reasons, since an uncompleted month would skew averages. You can still use the month range inputs if and when this isn't the desired behaviour.
 
 ### Data Boxes
 At the default plot pages, the 5 data boxes above the graph will always display streams for (in order from left to right):
