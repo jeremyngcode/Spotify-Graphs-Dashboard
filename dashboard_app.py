@@ -55,9 +55,8 @@ def default_dashboard(dashboard_id):
 		else:
 			last_xdays = len(df)
 
-		titlebar_rangelabel = f'Last {last_xdays} Days'
-		if last_xdays == 1:
-			titlebar_rangelabel = titlebar_rangelabel[:-1]
+		suffix = 's' if last_xdays > 1 else ''
+		titlebar_rangelabel = f'Last {last_xdays} Day{suffix}'
 
 		if dashboard_id == 1:
 			plot_graph_1(df, last_xdays=last_xdays,
@@ -80,9 +79,8 @@ def default_dashboard(dashboard_id):
 		else:
 			last_xmonths = len(df_monthly) - 1
 
-		titlebar_rangelabel = f'Last {last_xmonths} Months'
-		if last_xmonths == 1:
-			titlebar_rangelabel = titlebar_rangelabel[:-1]
+		suffix = 's' if last_xmonths > 1 else ''
+		titlebar_rangelabel = f'Last {last_xmonths} Month{suffix}'
 
 		plot_graph_2(df, df_monthly, last_xmonths=last_xmonths,
 			save_path=SPOTIFY_GRAPH_IMG
@@ -142,9 +140,8 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label = f'Last {last_xdays} Days'
-			if last_xdays == 1:
-				range_label = range_label[:-1]
+			suffix = 's' if last_xdays > 1 else ''
+			range_label = f'Last {last_xdays} Day{suffix}'
 
 		else:
 			selected_date_range = validate_date_input(df,
@@ -162,9 +159,8 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label = f'Range: {len(filtered_df)} Days'
-			if len(filtered_df) == 1:
-				range_label = range_label[:-1]
+			suffix = 's' if len(filtered_df) > 1 else ''
+			range_label = f'Range: {len(filtered_df)} Day{suffix}'
 
 		range_value_totalaverage = get_range_totalaverage(filtered_df)
 		range_label_totalaverage = (
@@ -207,9 +203,8 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label = f'Last {last_xmonths} Months'
-			if last_xmonths == 1:
-				range_label = range_label[:-1]
+			suffix = 's' if last_xmonths > 1 else ''
+			range_label = f'Last {last_xmonths} Month{suffix}'
 
 			range_value_totalaverage = get_range_totalaverage(filtered_df[:-1])
 
@@ -231,9 +226,8 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label = f'Range: {len(filtered_df)} Months'
-			if len(filtered_df) == 1:
-				range_label = range_label[:-1]
+			suffix = 's' if len(filtered_df) > 1 else ''
+			range_label = f'Range: {len(filtered_df)} Month{suffix}'
 
 			range_value_totalaverage = get_range_totalaverage(filtered_df)
 
@@ -270,9 +264,8 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label = f'Last {last_xdays} Days'
-			if last_xdays == 1:
-				range_label = range_label[:-1]
+			suffix = 's' if last_xdays > 1 else ''
+			range_label = f'Last {last_xdays} Day{suffix}'
 
 		else:
 			selected_date_range = validate_date_input(df,
@@ -289,9 +282,8 @@ def input_dashboard(dashboard_id):
 				save_path=SPOTIFY_GRAPH_IMG
 			)
 
-			range_label = f'Range: {len(filtered_df)} Days'
-			if len(filtered_df) == 1:
-				range_label = range_label[:-1]
+			suffix = 's' if len(filtered_df) > 1 else ''
+			range_label = f'Range: {len(filtered_df)} Day{suffix}'
 
 		range_value_average = round(
 			sum(daily_streams_per_listener) / len(daily_streams_per_listener), 3
