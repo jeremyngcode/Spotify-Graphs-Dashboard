@@ -7,8 +7,8 @@ from flask import (
 )
 from werkzeug.exceptions import HTTPException
 
+from csv_processing import process_csv
 from functions import *
-from csv_processing import *
 from input_validation import *
 from plot_graphs import *
 # -------------------------------------------------------------------------------------------------

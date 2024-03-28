@@ -118,7 +118,6 @@ def merge_csv(latest_csv, master_csv, save_path=None):
 
 	print('[New csv file successfully merged.]')
 	print('-' * 100)
-	return csv1
 
 def sort_csv(csv_file, save_path=None):
 	print('Sorting csv file..')
@@ -140,7 +139,6 @@ def sort_csv(csv_file, save_path=None):
 
 	print('[Csv file sorted.]')
 	print('-' * 100)
-	return csv1
 
 # -------------------------------------------------------------------------------------------------
 def process_csv(uploaded_file, master_csv, latest_csv, temp_csv, save_path=None):
