@@ -76,6 +76,7 @@
 			}
 			.file-input::file-selector-button:active {
 				transform: translateY(1px);
+				transition: 0.05s;
 			}
 		}
 
@@ -109,6 +110,7 @@
 					rgb(0 0 0 / 60%) 3px 4px 5px inset,
 					rgb(0 0 0 / 90%) 0px 0px 2px;
 				transform: translateY(1px);
+				transition: 0.05s;
 			}
 		}
 	}

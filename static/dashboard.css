@@ -125,6 +125,7 @@ body {
 				background-color: #b96806;
 				box-shadow: rgb(0 0 0 / 40%) 0px 0px 15px inset;
 				transform: translateY(1px);
+				transition: 0.05s;
 			}
 		}
 	}
@@ -239,6 +240,7 @@ body {
 				}
 				.input::-webkit-calendar-picker-indicator:active {
 					transform: translateY(0px);
+					transition: 0.05s;
 				}
 			}
 			.or {
@@ -358,6 +360,7 @@ body {
 						rgb(0 0 0 / 60%) 3px 4px 5px inset,
 						rgb(0 0 0 / 90%) 0px 0px 2px;
 					transform: translateY(1px);
+					transition: 0.05s;
 				}
 			}
 		}
