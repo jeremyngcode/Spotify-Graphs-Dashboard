@@ -363,5 +363,8 @@ def handle_error(err):
 
 # -------------------------------------------------------------------------------------------------
 if __name__ == '__main__':
-	webbrowser.open(f'http://{app.config["SERVER_NAME"]}')
-	app.run()
+	webbrowser.open(f"http://{app.config['HOST']}:{app.config['PORT']}")
+	app.run(
+		host=app.config['HOST'],
+		port=app.config['PORT']
+	)
