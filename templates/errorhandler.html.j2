@@ -5,13 +5,13 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Spotify Graphs Dashboard | {{ err_code }} - {{ err_name }}</title>
-	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
-	<link rel="stylesheet" href="{{ url_for('static', filename='errorhandler.css') }}">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/errorhandler.css') }}">
 </head>
 
 <body>
 	<div class="errorbox-container">
-		<img src="{{ url_for('static', filename='default-pfp.jpg') }}" class="pfp">
+		<img src="{{ url_for('static', filename='images/default-pfp.jpg') }}" class="pfp">
 		<div class="err-code">
 			<h1>{{ err_code }} - {{ err_name }}</h1>
 			<p>Oopsies...</p>

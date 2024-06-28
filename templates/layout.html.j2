@@ -5,10 +5,10 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<title>Spotify Graphs Dashboard | {{ graph_title }}</title>
-	<link rel="icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}">
 
 	{% block css %}
-	<link rel="stylesheet" href="{{ url_for('static', filename='dashboard.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/dashboard.css') }}">
 	<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 	{% endblock %}
 </head>
@@ -20,7 +20,7 @@
 		<aside class="sidebar">
 			<div class="pfp-container">
 				{% block pfp_img %}
-					<img src="{{ url_for('static', filename='default-pfp.jpg') }}" class="pfp alive">
+					<img src="{{ url_for('static', filename='images/default-pfp.jpg') }}" class="pfp alive">
 				{% endblock %}
 			</div>
 

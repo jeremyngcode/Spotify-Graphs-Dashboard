@@ -3,11 +3,11 @@
 
 {% block css %}
 	{{ super() }}
-	<link rel="stylesheet" href="{{ url_for('static', filename='csv-form-container.css') }}">
+	<link rel="stylesheet" href="{{ url_for('static', filename='css/csv-form-container.css') }}">
 {% endblock %}
 
 {% block pfp_img %}
-	<img src="{{ url_for('static', filename='default-pfp.jpg') }}" class="pfp">
+	<img src="{{ url_for('static', filename='images/default-pfp.jpg') }}" class="pfp">
 {% endblock %}
 
 {% block menu1 %}
